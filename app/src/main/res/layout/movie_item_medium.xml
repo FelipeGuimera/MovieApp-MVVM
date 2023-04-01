@@ -10,7 +10,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_marginStart="15dp"
+        android:layout_margin="8dp"
         android:layout_width="300dp"
         android:layout_height="148dp"
         android:clipToPadding="true"
