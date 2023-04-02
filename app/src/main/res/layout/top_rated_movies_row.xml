@@ -9,16 +9,17 @@
 
 
     <TextView
-        android:layout_marginStart="15dp"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Top rated movies"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/intersemibold"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_popular_movies"
+        android:id="@+id/rv_top_rated_movies"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="horizontal"

@@ -7,4 +7,7 @@ class MovieRepositoryImpl(private val dataSource: MovieDataSource) : MovieReposi
 
     override suspend fun getPopularMovies(): MovieList = dataSource.getPopularMovies()
 
+    override suspend fun getTopRatedMovies(): MovieList = dataSource.getTopRatedMovies()
+
+    override suspend fun getUpcomingMovies(): MovieList = dataSource.getUpcomingMovies()
 }
