@@ -22,7 +22,7 @@ import com.example.movieapppopular.ui.movie.adapters.MovieAdapterSmall
 import com.example.movieapppopular.ui.movie.adapters.concat.PopularMoviesConcatAdapter
 import com.example.movieapppopular.ui.movie.adapters.concat.TopRatedMoviesConcatAdapter
 import com.example.movieapppopular.ui.movie.adapters.concat.UpcomingMoviesConcatAdapter
-import kotlin.math.log
+
 
 
 class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieClickListener {
