@@ -15,7 +15,7 @@
         android:layout_margin="8dp"
         android:clipToPadding="true"
         app:cardCornerRadius="16dp">
-        
+
         <ImageView
             android:id="@+id/movie_image"
             android:layout_width="match_parent"

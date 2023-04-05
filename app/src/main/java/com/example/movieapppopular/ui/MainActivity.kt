@@ -2,7 +2,6 @@ package com.example.movieapppopular.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import com.example.movieapppopular.R
 
 class MainActivity : AppCompatActivity() {
