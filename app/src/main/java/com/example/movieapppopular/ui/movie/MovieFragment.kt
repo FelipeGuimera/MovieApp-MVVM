@@ -75,7 +75,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
             movie.poster_path,
             movie.backdrop_path,
             movie.vote_average.toFloat(),
-            movie.vote_count,
+            movie.vote_count.toFloat().toInt(),
             movie.overview,
             movie.title,
             movie.original_language,

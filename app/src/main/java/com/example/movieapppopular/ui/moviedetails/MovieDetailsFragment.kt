@@ -20,7 +20,10 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         Glide.with(requireContext()).load("https://image.tmdb.org/t/p/w500/${args.backgroundImageUrl}").centerCrop().into(binding.imgBackgroud)
         binding.title.text = args.title
         binding.txtDescription.text =  args.overview
-
+        binding.txtRelease.text = args.releaseData
+        binding.language.text = args.language.uppercase()
+        binding.voteAverage.text = args.voteAverage.toString()
+        binding.voteCount.text = args.voteCount.toString()
     }
 }
 
