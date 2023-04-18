@@ -12,7 +12,7 @@ import com.example.movieapppopular.databinding.MovieItemMediumBinding
 
 
 
-class MovieAdapter(private val moviesList: List<Movie>, private val itemClickListener: OnMovieClickListener): RecyclerView.Adapter<BaseViewHolder<*>>() {
+class MovieAdapterMedium(private val moviesList: List<Movie>, private val itemClickListener: OnMovieClickListener): RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     interface OnMovieClickListener{
         fun OnMovieClick(movie: Movie)

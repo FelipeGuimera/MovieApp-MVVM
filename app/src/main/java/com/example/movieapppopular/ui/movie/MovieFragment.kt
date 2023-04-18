@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.example.movieapppopular.R
 import com.example.movieapppopular.core.Resource
 import com.example.movieapppopular.data.model.Movie
-import com.example.movieapppopular.data.remote.MovieDataSource
+import com.example.movieapppopular.data.remote.RemoteMovieDataSource
 import com.example.movieapppopular.databinding.FragmentMovieBinding
 import com.example.movieapppopular.presentation.MovieViewModel
 import com.example.movieapppopular.presentation.MovieViewModelFactory
 import com.example.movieapppopular.repository.MovieRepositoryImpl
 import com.example.movieapppopular.repository.RetrofitClient
-import com.example.movieapppopular.ui.movie.adapters.MovieAdapter
+import com.example.movieapppopular.ui.movie.adapters.MovieAdapterMedium
 import com.example.movieapppopular.ui.movie.adapters.MovieAdapterSmall
 import com.example.movieapppopular.ui.movie.adapters.concat.PopularMoviesConcatAdapter
 import com.example.movieapppopular.ui.movie.adapters.concat.TopRatedMoviesConcatAdapter
@@ -25,13 +25,13 @@ import com.example.movieapppopular.ui.movie.adapters.concat.UpcomingMoviesConcat
 
 
 
-class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieClickListener {
+class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapterMedium.OnMovieClickListener {
 
     private lateinit var binding: FragmentMovieBinding
     private val viewModel by viewModels<MovieViewModel> {
         MovieViewModelFactory(
             MovieRepositoryImpl(
-                MovieDataSource(RetrofitClient.webservice)
+                RemoteMovieDataSource(RetrofitClient.webservice)
             )
         )
     }
@@ -52,7 +52,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(PopularMoviesConcatAdapter(MovieAdapter(result.data.first.results, this@MovieFragment)))
+                        addAdapter(PopularMoviesConcatAdapter(MovieAdapterMedium(result.data.first.results, this@MovieFragment)))
                         addAdapter(TopRatedMoviesConcatAdapter(MovieAdapterSmall(result.data.second.results, this@MovieFragment)))
                         addAdapter(UpcomingMoviesConcatAdapter(MovieAdapterSmall(result.data.third.results, this@MovieFragment)))
                     }
