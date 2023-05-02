@@ -1,6 +1,5 @@
 package com.example.movieapppopular.data.local
 
-import com.example.movieapppopular.application.AppConstants
 import com.example.movieapppopular.data.model.MovieEntity
 import com.example.movieapppopular.data.model.MovieList
 import com.example.movieapppopular.data.model.toMovieList
