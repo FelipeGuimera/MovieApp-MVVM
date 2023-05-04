@@ -1,5 +1,6 @@
 package com.example.movieapppopular.repository
 
+import com.example.movieapppopular.core.InternetCheck
 import com.example.movieapppopular.data.local.LocalMovieDataSource
 import com.example.movieapppopular.data.model.MovieList
 import com.example.movieapppopular.data.model.toMovieEntity
@@ -10,24 +11,37 @@ class MovieRepositoryImpl(
     private val dataSourceLocal: LocalMovieDataSource
 ) : MovieRepository {
 
-    override suspend fun getPopularMovies(): MovieList{
-        dataSourceRemote.getPopularMovies().results.forEach{movie->
-            dataSourceLocal.saveMovie(movie.toMovieEntity("popular"))
+    override suspend fun getPopularMovies(): MovieList {
+        return if (InternetCheck.isNetworkAvailable()) {
+            dataSourceRemote.getPopularMovies().results.forEach { movie ->
+                dataSourceLocal.saveMovie(movie.toMovieEntity("popular"))
+            }
+            dataSourceLocal.getPopularMovies()
+        } else {
+            dataSourceLocal.getPopularMovies()
         }
-        return dataSourceLocal.getPopularMovies()
     }
 
-    override suspend fun getTopRatedMovies(): MovieList{
-        dataSourceRemote.getTopRatedMovies().results.forEach{movie->
-            dataSourceLocal.saveMovie(movie.toMovieEntity("toprated"))
+    override suspend fun getTopRatedMovies(): MovieList {
+        return if (InternetCheck.isNetworkAvailable()) {
+            dataSourceRemote.getTopRatedMovies().results.forEach { movie ->
+                dataSourceLocal.saveMovie(movie.toMovieEntity("toprated"))
+            }
+            dataSourceLocal.getTopRatedMovies()
+        } else {
+            dataSourceLocal.getTopRatedMovies()
         }
-        return dataSourceLocal.getTopRatedMovies()
     }
 
-    override suspend fun getUpcomingMovies(): MovieList{
-        dataSourceRemote.getUpcomingMovies().results.forEach{movie->
-            dataSourceLocal.saveMovie(movie.toMovieEntity("upcoming"))
+    override suspend fun getUpcomingMovies(): MovieList {
+        return if (InternetCheck.isNetworkAvailable()) {
+            dataSourceRemote.getUpcomingMovies().results.forEach { movie ->
+                dataSourceLocal.saveMovie(movie.toMovieEntity("upcoming"))
+            }
+            dataSourceLocal.getUpcomingMovies()
+        } else {
+            dataSourceLocal.getUpcomingMovies()
         }
-        return dataSourceLocal.getUpcomingMovies()
     }
+
 }
